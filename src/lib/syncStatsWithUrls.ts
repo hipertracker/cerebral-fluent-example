@@ -1,8 +1,7 @@
+import { Compute } from 'cerebral';
+import { props, state } from 'cerebral/tags';
 // TODO: replace LoDash with Ramda or LoDash-fp, problem: Ramda has different isEmpty()
 import { isEmpty as _isEmpty, uniq as _uniq } from 'lodash';
-import { props, state } from 'cerebral/tags';
-
-import { Compute } from 'cerebral';
 
 interface Dict {
   urlKey: string;
@@ -12,23 +11,29 @@ interface Dict {
 }
 
 export default function syncStatewithUrl (items: Dict[]) {
-  
+
   const map = items.reduce((acc, { urlKey, statePath, sep, keyPath }) => {
     let computedValue = Compute(state`${statePath}`, stateValue => {
-      if (stateValue instanceof Array && sep) { return _uniq(stateValue).join(sep); }
+      if (stateValue instanceof Array && sep) {
+        return _uniq(stateValue).
+          join(sep);
+      }
       return stateValue;
     });
     if (keyPath) {
       computedValue = Compute(
         state`${statePath}.${state`${keyPath}`}`,
         (stateValue) => {
-          if (stateValue instanceof Array && sep) { return _uniq(stateValue).join(sep); }
+          if (stateValue instanceof Array && sep) {
+            return _uniq(stateValue).
+              join(sep);
+          }
           return stateValue;
         },
       );
     }
     return { ...acc, [urlKey]: computedValue };
-  },                       {});
+  }, {});
 
   const rmap = items.reduce((acc, { urlKey, statePath, sep, keyPath }) => {
     let computedValue = Compute(
@@ -54,7 +59,7 @@ export default function syncStatewithUrl (items: Dict[]) {
       );
     }
     return { ...acc, [statePath]: computedValue };
-  },                        {});
+  }, {});
 
   return { map, rmap };
 }

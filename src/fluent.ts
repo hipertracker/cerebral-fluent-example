@@ -5,7 +5,6 @@ import {
   SequenceFactory,
   SequenceWithPropsFactory,
 } from '@cerebral/fluent';
-
 import { Signals, State } from './app/types';
 
 export interface Context<Props = {}> extends IContext<Props> {

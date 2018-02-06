@@ -1,4 +1,4 @@
-import { Dictionary, Module } from '@cerebral/fluent';
+import { Dictionary } from '@cerebral/fluent';
 import * as signals from './sequences';
 
 export type Language = {
@@ -12,4 +12,4 @@ export type State = {
 
 export type Signals = {
   [key in keyof typeof signals]: typeof signals[key]
-};
+  };

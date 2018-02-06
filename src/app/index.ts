@@ -1,16 +1,15 @@
 import { Module } from '@cerebral/fluent';
 import { HttpProviderError } from '@cerebral/http';
-import { Signals, State } from './types';
-import * as moduleSequences from './sequences';
+import read from './modules/read';
 import router from './router';
-import read  from './modules/read';
-import { signals as readSignals, state as readState } from './modules/read';
+import * as moduleSequences from './sequences';
+import { Signals, State } from './types';
 
 const state: State = {
   page: 'home',
   navbarMenuActive: false,
   locale: 'en',
-  httpError: '',  
+  httpError: '',
 };
 
 const signals: Signals = {
@@ -19,7 +18,7 @@ const signals: Signals = {
 
 export const module = Module({
   state,
-  signals,  
+  signals,
   modules: {
     router,
     read,
