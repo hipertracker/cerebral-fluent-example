@@ -10,9 +10,7 @@ export type ModuleState = {
   httpError?: string,
 };
 
-export type State = ModuleState & {
-  read: ReadState,
-};
+export type State = ModuleState;
 
 export type ModuleSignals = {
   [key in keyof typeof signals]: typeof signals[key]

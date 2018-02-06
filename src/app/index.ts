@@ -11,7 +11,6 @@ const state: State = {
   navbarMenuActive: false,
   locale: 'en',
   httpError: '',  
-  read: readState,
 };
 
 const signals: Signals = {
