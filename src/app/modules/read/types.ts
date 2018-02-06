@@ -13,3 +13,4 @@ export type State = {
 export type Signals = {
   [key in keyof typeof signals]: typeof signals[key]
   };
+  

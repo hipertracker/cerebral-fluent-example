@@ -1,11 +1,15 @@
-import {
-  ConnectFactory,
-  IBranchContext,
-  IContext,
-  SequenceFactory,
-  SequenceWithPropsFactory,
-} from '@cerebral/fluent';
-import { Signals, State } from './app/types';
+import { ConnectFactory, IBranchContext, IContext, SequenceFactory, SequenceWithPropsFactory } from '@cerebral/fluent';
+
+import * as read from './app/modules/read/types';
+import * as app from './app/types';
+
+type State = app.State & {
+  read: read.State,
+};
+
+type Signals = app.Signals & {
+  read: read.Signals,
+};
 
 export interface Context<Props = {}> extends IContext<Props> {
   state: State;
