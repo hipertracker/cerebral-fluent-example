@@ -16,9 +16,6 @@ const state: State = {
 
 const signals: Signals = {
   ...moduleSequences,
-  read: {
-    routed: readSignals.routed,
-  },
 };
 
 export const module = Module({

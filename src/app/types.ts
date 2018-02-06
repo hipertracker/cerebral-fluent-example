@@ -18,8 +18,4 @@ export type ModuleSignals = {
   [key in keyof typeof signals]: typeof signals[key]
 };
 
-export type Signals = ModuleSignals & {
-  read: {
-    routed: typeof readSignals.routed,
-  },
-};
+export type Signals = ModuleSignals;
