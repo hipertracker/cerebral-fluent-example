@@ -6,5 +6,5 @@ import { Dictionary } from '@cerebral/fluent';
 import { Language } from './types';
 
 export function initPage ({ state }: Context) {
-  console.log('@@@@@@@@@@@@@@@@');
+  state.page = 'read';
 }
